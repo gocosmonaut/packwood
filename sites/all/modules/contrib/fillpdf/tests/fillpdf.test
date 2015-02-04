@@ -1,0 +1,44 @@
+<?php
+/**
+ * @file fillpdf.test
+ * Contains tests for the module.
+ */
+
+/**
+ * Tests the PDF handling functions of the API (a.k.a. the whole API).
+ *
+ * @todo Add a test based on an Acrobat-created PDF.
+ */
+class FillPdfAdminTestCase extends DrupalWebTestCase {
+  protected $privileged_user;
+
+  public static function getInfo() {
+    // Note: getInfo() strings are not translated with t().
+    return array(
+      'name' => 'FillPDF administration',
+      'description' => 'Ensure that FillPDF administration functions are
+        present and work.',
+      'group' => 'FillPDF',
+    );
+  }
+
+  public function setUp() {
+    // Enable any modules required for the test. This should be an array of
+    // module names.
+    parent::setUp(array('simpletest', 'fillpdf'));
+
+    // Create and log in our privileged user.
+    $this->privileged_user = $this->drupalCreateUser(array(
+      'access administration pages',
+      'administer pdf handling settings',
+      'administer pdfs',
+      'publish all pdfs',
+      ));
+    $this->drupalLogin($this->privileged_user);
+  }
+
+  public function testPdfUpload() {
+    $this->drupalGet('admin/structure/fillpdf');
+  }
+}
+

@@ -1,0 +1,11 @@
+name = PDF Forms API
+description = PDF Forms API provides implementing modules a unified API for parsing and filling PDF files.
+core = 7.x
+files[] = tests/pdf_forms.test
+
+; Information added by Drupal.org packaging script on 2014-01-13
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "pdf_forms"
+datestamp = "1389632332"
+

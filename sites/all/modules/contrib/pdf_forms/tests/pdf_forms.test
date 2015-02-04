@@ -1,0 +1,120 @@
+<?php
+/**
+ * @file pdf_forms.test
+ * Contains tests for the module.
+ */
+
+/**
+ * Tests the PDF handling functions of the API (a.k.a. the whole API).
+ *
+ * @todo Add a test based on an Acrobat-created PDF.
+ */
+class PdfFormsPdfHandlingTestCase extends DrupalWebTestCase {
+  protected $privileged_user;
+  protected $unfilled_pdf;
+  protected $filled_pdf;
+
+  public static function getInfo() {
+    // Note: getInfo() strings are not translated with t().
+    return array(
+      'name' => 'PDF handling',
+      'description' => 'Ensure that PDF Forms API functions properly.',
+      'group' => 'PDF Forms API',
+    );
+  }
+
+  public function setUp() {
+    // Enable any modules required for the test. This should be an array of
+    // module names.
+    parent::setUp(array('simpletest', 'pdf_forms'));
+
+    // Create and log in our privileged user.
+    $this->privileged_user = $this->drupalCreateUser(array(
+      'administer pdf handling settings',
+      'access administration pages',
+      ));
+    $this->drupalLogin($this->privileged_user);
+
+    // Initialize variables specific to this test.
+    $this->unfilled_pdf = drupal_get_path('module', 'pdf_forms') . '/tests/files/pdf_forms_livecycle_test_unfilled.pdf';
+    $this->filled_pdf = drupal_get_path('module', 'pdf_forms') . '/tests/files/pdf_forms_livecycle_test_filled.pdf';
+  }
+
+  /**
+   * Test parsing and filling in the same function to avoid Drupal getting
+   * reinstalled unnecessarily.
+   */
+  public function testHandling() {
+    // Test Fill PDF Service first.
+    $this->drupalPost('admin/config/development/pdf_forms', array(
+        // This works for our specific test case only.
+        'pdf_forms_fps_api_key' => 'pdf_forms',
+        'pdf_forms_handler' => 'fps',
+      ),
+      t('Save configuration'));
+
+    // Test parsing.
+    $fields = pdf_forms_parse($this->unfilled_pdf);
+
+    $expected_fields = array(
+      0 => array(
+        'name' => 'form1[0].#subform[0].ImageField1[0]',
+        'value' => '',
+        'type' => 'Pushbutton',
+      ),
+      1 => array(
+        'name' => 'form1[0].#subform[0].Button1[0]',
+        'value' => '',
+        'type' => 'Pushbutton',
+      ),
+      2 => array(
+        'name' => 'form1[0].#subform[0].TextField1[0]',
+        'value' => '',
+        'type' => 'Text',
+      ),
+    );
+
+    $this->assertTrue($fields === $expected_fields, 'Parsed fields match known-good parse.');
+
+    debug($fields, '$fields');
+    debug($expected_fields, '$expected_fields');
+
+    // Test filling. Start by imitating the sample function of Fill PDF.
+    $fill_fields = array();
+    foreach ((array) $fields as $field) {
+      $fill_fields[$field['name']] = $field['name'];
+    }
+
+    // Uncomment if using a different endpoint.
+    // variable_set('pdf_forms_fps_endpoint', 'fillpdf-service.com/xmlrpc.php');
+
+    $original_filled_pdf = pdf_forms_fill($this->unfilled_pdf, $fill_fields);
+    // Use preg_replace to fix up any embedded XML where only the date
+    // changes. If anything *else* changes, then the test *should* fail.
+    //
+    // The date isn't random; it's fixed to be the same as the source file.
+    $filled_pdf = preg_replace(array(
+        '#<xmp:(Metadata|Modify)Date>([^<]+)(<[^>]+>)#',
+        '#(<</Creator)(.*)(ModDate\(D:)([^)]+)(.*>>)#',
+        '#(<</Root.*\[<).*(>\].*>>)#',
+      ),
+      array(
+        '<xmp:$1Date>2012-12-29T16:03:10-08:00$3',
+        '${1}${2}${3}20121229160310-08\'00\'${5}',
+        '${1}e01af9f587474cb9ab0eb6b64981ce79><b037d50ba41f0faa8f689dcc36d9e816${2}',
+      ),
+      $original_filled_pdf);
+
+    $known_good_md5 = md5(_pdf_forms_get_file_contents($this->filled_pdf));
+    $filled_pdf_md5 = md5($filled_pdf);
+    $this->assertTrue($known_good_md5 === $filled_pdf_md5, 'Known-good filled PDF matches PDF returned from handler.');
+
+    debug($known_good_md5, 'Known-good MD5');
+    debug($filled_pdf_md5, 'MD5 for file returned from handler');
+
+    // Uncomment to save a single copy of the filled PDF.
+    // TODO: Can I clean this up when Clean Test Environment is clicked?
+    // file_put_contents('/tmp/pdf_forms_filled_pdf.pdf', $filled_pdf);
+  }
+}
+

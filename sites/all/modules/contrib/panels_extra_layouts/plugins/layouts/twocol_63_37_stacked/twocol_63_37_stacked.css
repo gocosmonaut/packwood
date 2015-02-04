@@ -1,0 +1,41 @@
+/* CSS file for 63-37 stacked layout. */
+@import url('../../../css/base-grid.css');
+
+/*
+.footer, .header {
+  width: 100%;
+  padding: 1em;
+}
+
+.left {
+  width: 65%;
+  float:left;
+  background:orange;
+}
+
+.right {
+  width: 32%;
+  background:red;
+  float:right;
+}
+
+.right img {
+	width:100%;
+	max-width:370px;
+}
+
+.right .inside {
+	margin-left:0em;
+}
+
+/* Margins taken from the Panels module plugins */
+.lastUnit .inside {}
+ /*  margin: 0 0 1em .5em; 
+}
+.firstUnit .inside {
+  margin: 0 .5em 1em 0;
+}
+.unit .inside {
+  margin: 0 .5em 1em .5em;
+}
+*/

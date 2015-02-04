@@ -1,0 +1,218 @@
+<?php
+/**
+ * @file pdf_forms.module
+ * This is the main module file. All the cool stuff is contained and happens
+ * here.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function pdf_forms_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#pdf_forms':
+      return t("Enable this module if another module needs it. It doesn't do much on its own.");
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function pdf_forms_menu() {
+  $items['admin/config/development/pdf_forms'] = array(
+    'title' => 'PDF Forms API settings',
+    'description' => 'Configure PDF handling method and corresponding settings.',
+    'page callback' => 'pdf_forms_admin_settings',
+    'file' => 'pdf_forms.admin.inc',
+    'access arguments' => array('administer pdf handling settings'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+function pdf_forms_permission() {
+  return array(
+    'administer pdf handling settings' => array(
+      'title' => t('Administer PDF handling settings'),
+      'description' => t('Grants access to the <em>PDF Forms API settings</em>.'),
+    ),
+  );
+}
+
+function pdf_forms_fps_endpoint() {
+  return variable_get('pdf_forms_fps_protocol', 'http') . "://" . variable_get('pdf_forms_fps_endpoint', "fillpdf-service.com/xmlrpc.php");
+}
+
+function pdf_forms_parse($filepath) {
+  $field_data = array();
+  $pdf_content = _pdf_forms_get_file_contents($filepath);
+
+  if ($pdf_content === FALSE) {
+    // TODO: Make this work. The API will have to return more errors than this.
+    // Write a utility function for reporting the errors as well so the
+    // implementing module can choose to use that if it has no need for its own.
+    // return _pdf_forms_error('Parse error: File not found.');
+    return FALSE;
+  }
+
+  switch (variable_get('pdf_forms_handler')) {
+    // Use Fill PDF Service
+    case 'fps':
+      $result = _pdf_forms_xmlrpc_request(pdf_forms_fps_endpoint(), 'parse_pdf_fields', base64_encode($pdf_content));
+      if ($result->error == TRUE) {
+        // TODO: Use error function once it's written.
+        return;
+      }
+      $field_data = $result->data;
+      break;
+
+    // Use local php/java bridge (must have Tomcat & JavaBridge installed on VPS
+    // or dedicated)
+    case 'local':
+      $require = drupal_get_path('module', 'fillpdf') . '/lib/JavaBridge/java/Java.inc';
+      require_once DRUPAL_ROOT . '/' . $require;
+      try {
+        $fillpdf = new java('com.ocdevel.FillpdfService', base64_encode($pdf_content), 'bytes');
+        $field_data = java_values($fillpdf->parse());
+      }
+      catch (JavaException $e) {
+        // TODO: error
+        // drupal_set_message(check_plain(java_truncate((string) $e)), 'error');
+      }
+      break;
+
+    case 'pdftk': // use pdftk program (must be installed locally)
+      $field_data = fillpdf_execute_parse('pdftk', $filepath);
+      break;
+
+    default:
+      // drupal_set_message(t('PDF handling method is not configured.'), 'error');
+      // TODO: error
+      return;
+  }
+
+  return $field_data;
+}
+
+function pdf_forms_fill($filepath, $field_data, array $fill_options = array()) {
+  $pdf_content = _pdf_forms_get_file_contents($filepath);
+  switch (variable_get('pdf_forms_handler')) {
+    // Use Fill PDF Service
+    case 'fps':
+      // Initialize the options FPS uses, in case they weren't passed.
+      $fill_options += array(
+        'flatten' => TRUE,
+        'image data' => array(),
+      );
+      $api_key = variable_get('pdf_forms_fps_api_key', '0');
+      list($flatten, $image_data) = array($fill_options['flatten'], $fill_options['image data']);
+      $result = _pdf_forms_xmlrpc_request(pdf_forms_fps_endpoint(), 'merge_pdf_v3', base64_encode($pdf_content), $field_data, $api_key, $flatten, $image_data);
+      if ($result->error == TRUE) {
+        // TODO: error
+        return;
+      }
+      $data = base64_decode($result->data);
+      break;
+
+    // Use local php/java bridge (must have Tomcat & JavaBridge installed on
+    // VPS or dedicated
+    case 'local':
+      $require = drupal_get_path('module', 'fillpdf') . '/lib/JavaBridge/java/Java.inc';
+      require_once DRUPAL_ROOT . '/' . $require;
+      try {
+        $fillpdf = new java('com.ocdevel.FillpdfService', base64_encode($pdf_content), 'bytes');
+        foreach ($field_data as $key => $field) {
+          if (substr($field, 0, 7) == '{image}') {
+            // Remove {image} marker.
+            $image_filepath = substr($field, 7);
+            $fillpdf->image($key, $image_filepath, "file");
+          }
+          else {
+            $fillpdf->text($key, $field);
+          }
+        }
+      }
+      catch (JavaException $e) {
+        drupal_set_message(check_plain(java_truncate((string) $e)), 'error');
+        drupal_goto(); // after setting error message
+      }
+      try {
+        if ($flatten) {
+          $data = java_values(base64_decode($fillpdf->toByteArray()));
+        }
+        else {
+          $data = java_values(base64_decode($fillpdf->toByteArrayUnflattened()));
+        }
+      }
+      catch (JavaException $e) {
+        drupal_set_message(java_truncate((string)$e), 'error');
+        drupal_goto(); //after setting error message
+      }
+      break;
+
+    case 'pdftk': // Use PDFTK to merge the two
+      $data = fillpdf_execute_merge('pdftk', $field_data, $fillpdf_info, 'url', $flatten);
+      break;
+
+    default:
+      // drupal_set_message(t('Fill PDF is not configured.'), 'error');
+      // @TODO: error
+      return;
+  }
+
+  return $data;
+}
+
+function _pdf_forms_xmlrpc_request($url, $method) {
+  $args = func_get_args();
+  array_shift($args); // $url
+  // Fix up the array for Drupal 7 xmlrpc() function style
+  $args = array($args[0] => array_slice($args, 1));
+  $result = xmlrpc($url, $args);
+  $ret = new stdClass;
+  if (isset($result['error'])) {
+    drupal_set_message($result['error'], 'error');
+    $ret->error = TRUE;
+  }
+  elseif ($result == FALSE || xmlrpc_error()) {
+    $error = xmlrpc_error();
+    $ret->error = TRUE;
+    /* drupal_set_message(t('There was a problem contacting the Fill PDF
+       service.
+       It may be down, or you may not have internet access. [ERROR @code:
+       @message]',
+       array('@code' => $error->code, '@message' => $error->message)), 'error');*/
+  }
+  else {
+    $ret->data = $result['data'];
+    $ret->error = FALSE;
+  }
+  return $ret;
+}
+
+function _pdf_forms_get_file_contents($filepath) {
+  $filepath = drupal_realpath($filepath);
+  if (!file_exists($filepath)) {
+    return FALSE;
+  }
+  $handle = fopen($filepath, "r");
+  $content = fread($handle, filesize($filepath));
+  fclose($handle);
+  return $content;
+}
+
+function pdf_forms_pdftk_check($pdftk_path = 'pdftk') {
+  // An empty value means we should leave it to the PATH.
+  if (empty($pdftk_path)) {
+    $pdftk_path = 'pdftk';
+  }
+  $output = array();
+  $status = NULL;
+  exec($pdftk_path, $output, $status);
+  if (in_array($status, array(126, 127))) {
+    return FALSE;
+  }
+  return TRUE;
+}
+

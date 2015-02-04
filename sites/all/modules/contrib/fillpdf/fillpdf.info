@@ -1,0 +1,16 @@
+name = FillPDF
+description = Allows users to populate PDF forms from website data.
+package = Other
+core = 7.x
+
+dependencies[] = token
+dependencies[] = pdf_forms
+
+files[] = tests/fillpdf.test
+
+; Information added by Drupal.org packaging script on 2014-02-06
+version = "7.x-2.x-dev"
+core = "7.x"
+project = "fillpdf"
+datestamp = "1391702305"
+

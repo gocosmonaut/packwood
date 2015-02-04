@@ -1,0 +1,973 @@
+/**
+ * This file should get overwritten if Method 1 is used. If Method 2 is chosen,
+ * remove this comment and start adding your styles to this file.
+ */
+ 
+ @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600);
+
+body {
+	background:#efe2b4 url(../../../../default/files/granite.jpg);
+}
+
+a, span, p, body, h1, h2, h3, h4 {
+	font-family: 'Source Sans Pro', sans-serif;
+	text-rendering: optimizelegibility;
+	
+}
+
+div.field-name-body p {
+	margin-bottom:12px;
+}
+
+a, button:hover, img a:hover {
+	 transition: all 0.4s ease 0s;
+}
+
+.front h1 {
+	display:block;
+}
+
+.front h1.page-header {
+	display:none;
+}
+
+h1 {
+	font-weight:300;
+}
+
+h2, h3, h4, h5,  span, p, body  {
+	font-weight:400;
+	margin:0px;
+	
+}
+
+h2 {
+	font-size:1.25em;
+	line-height:120%;
+}
+
+.front h2.pane-title {
+	font-size:.9em;
+	text-transform:uppercase;
+padding: 1.5% 2% 1.5% 0%;
+	border-bottom:#887b61 1px solid;
+	
+	margin-bottom:2%;
+	letter-spacing:1px;
+}
+
+
+a {
+	color:#247dbc;
+	font-weight:400;
+	font-size:1em;
+}
+
+b {
+	font-weight:600;
+}
+
+sub {
+	font-weight:300;
+}
+
+p  {
+	font-size:1.1em;
+}
+
+
+
+tr td {
+	padding:12px !important;
+}
+
+tr.even {
+	background:#f0f0f0;
+}
+
+.badge {
+	font-size:1em;
+	background:#ccc;
+	margin:2.5% 0% 2.5% 0%;
+	font-weight:400;
+}
+
+.not-front .badge {
+	font-size:1em;
+	
+	margin:1.5% 0%;
+	font-weight:400;
+}
+
+div.main-container .form-control {
+    background-color: #f9f9e0;
+   
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    color: #333;
+    display: block;
+    font-size: 1.25em;
+
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.25s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+}
+
+/* GLYPHICONS */
+
+span.glyphicon.glyphicon-chevron-right {
+	font-size:.85em;
+}
+
+span.glyphicon.glyphicon-phone-alt {
+		font-size:.85em;
+		margin-left:10px;
+		color:#999999;
+}
+
+span.glyphicon.glyphicon-envelope {
+	font-size:.9em;
+		margin-left:10px;
+		color:#cccccc;
+}
+
+span.glyphicon.glyphicon-home {
+	font-size:.85em;
+		margin-left:6px;
+}
+	
+
+.panel-default > .panel-heading {
+	padding:5px 5px 5px 10px;
+	background:#f5f1e9;
+}
+
+.panel-body {
+	padding:8px 10px;
+}
+
+.footer {
+	border:0px;
+	margin:20px 0px 15px 0px;
+	padding:0px;
+	text-align:center;
+}
+
+
+
+/* 
+div.views-row {
+	padding:1.5% 1.5% 1.5% 2%;
+	border-bottom:1px solid #ddd;
+}
+div.views-row-even {
+	background:#f0f0f0;
+}
+
+
+div.views-row-odd {
+	background:white;
+}
+*/
+
+div.main-container.container {
+	background: none repeat scroll 0 0 white;
+    border-radius: 12px;
+    box-shadow: 0 0 9px #666;
+    margin-top: 3%;
+    padding: 1.5%;
+}
+
+header#navbar { 
+	padding:0px;
+	background:/*#043c5c*/ white;
+}
+
+header#navbar div.container, header#navbar div.navbar-collapse {
+	padding:0px;
+	
+}
+
+header.navbar-fixed-top {
+	border-bottom:#887b61 1px solid;
+}
+
+
+header#navbar.affix {
+	box-shadow:1px 1px 3px #999999;
+	opacity:.95;
+	background:#f9f9f9 url(../../../../default/files/affix_gradient.png) repeat-x bottom;
+	border-bottom:1px solid #aaa;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #247dbc;
+    font-weight: 400;
+	font-size: 1.1em;
+	padding:15px 12px;
+}
+
+.navbar-default {
+	border:0px;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    background-color: #f5f5f5;
+    color: #c9c9c9;
+}
+
+/* UTILITY NAV */
+
+div.utility-nav {
+	
+	width:100%;
+	background:#475b71 url(../../../../default/files/denim.jpg);
+	text-align:center;
+	height:28px;
+}
+
+ div.utility-nav  section#block-block-3  {
+ }
+ 
+  div.utility-nav  section#block-block-3 p {
+	float: right;
+
+    padding: 4px 0 2px;
+ }
+
+ div.utility-nav  section#block-block-3 a {
+	 color:white;
+	 padding-left:20px;    font-size: .95em;
+ }
+
+ div.utility-nav  section#block-block-3 {
+	 width:1170px;
+	 margin:0px auto;
+ }
+ 
+ span.welcome-back {
+	 color:#f1d496;
+	       font-size: .95em;
+ }
+ 
+ div.site-title {
+	 float:left;
+ }
+ 
+
+ 
+  div.site-title p a {
+color:#ffedc5 !important;
+font-size: .85em !important;
+letter-spacing:.5px;
+font-weight:600;
+padding:0px !important;
+ }
+ 
+  div.site-title p a:hover {
+color:white !important;
+text-decoration:none;
+ }
+ 
+ 
+ body.logged-in a.sign-in, body.logged-in a.become-member {
+	 display:none;
+ }
+ 
+ body.not-logged-in span.welcome-back, body.not-logged-in a.sign-out, body.not-logged-in a.your-profile {
+	 display:none;
+ }
+ 
+ /* PHONE */
+ 
+ 
+ section#block-block-4  {
+	  float:right;
+  }
+ 
+  section#block-block-4 p {
+	  text-align:right;
+	  padding-top:10px;
+
+  }
+  section#block-block-4 p span.phone  {
+	  font-size:1.4em;
+	  font-weight:600;
+	color:#7b7b7b;
+  }
+  
+  footer span.phone  {
+  
+  background: none repeat scroll 0 0 #887b61;
+    border-radius: 6px;
+    color: white;
+    font-size: 1.4em;
+    font-weight: 600;
+    margin: 3% 0;
+    padding: 0.25% 1%;
+  }}
+
+@media only screen and (min-width: 768px) { /* MAKE DROPDOWN AUTOMATIC ON HOVER, MEDIA QUERY TO REMOVE CONFLICT W/ MOBILE MENU */
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+ }
+}
+
+/* TWO COLUMN FLIPPED */
+
+/* CSS file for 63-37 stacked layout. */
+@import url('../../../css/base-grid.css');
+
+.footer, .header {
+  width: 100%;
+  
+}
+
+footer.footer.container div.region.region-footer {
+	width:1170px;
+	
+	margin:0px auto;
+}
+
+.left {
+  width: 65%;
+  float:left;
+
+}
+
+.right {
+  width: 32%;
+  
+  float:right;
+}
+
+.right img {
+	width:100%;
+	max-width:370px;
+}
+
+.right .inside {
+	margin-left:0em;
+}
+
+/* Margins taken from the Panels module plugins */
+.lastUnit .inside {
+ /*  margin: 0 0 1em .5em; */
+}
+.firstUnit .inside {
+  margin: 0 .5em 1em 0;
+}
+.unit .inside {
+ /* margin: 0 .5em 1em .5em; */
+ margin:0;
+}
+
+div.pane-views-columns-block-2 {
+background:#dddddd url(../../../../default/files/embossed_logo.gif) center middle no-repeat;
+margin:0px 0px 2% 0px;
+padding:0px;
+
+}
+
+div.pane-views-columns-block-2 .badge {
+margin-left:3%;
+padding:4px 10px;
+font-size:1.1em;
+background:url(../../../../default/files/10pct_white.png) !important;
+border:1px solid #bbb;
+box-shadow:1px 1px 3px #333;
+}
+
+div.pane-views-columns-block-2 div.views-field.views-field-view-node {
+	padding-left:3%;
+	margin-top:1%;
+	font-weight:600;
+	font-size:1.25em;
+}
+
+div.pane-views-columns-block-2 div.views-field.views-field-view-node a {
+	
+color:white;
+}
+
+div#views_slideshow_cycle_div_columns-block_2_0 {
+	background:#10294f url(../../../../default/files/blueprint.png) top left no-repeat;
+    height: 300px;
+    width: 100%;
+	
+}
+
+div#views_slideshow_cycle_div_columns-block_2_1 {
+	background:url(../../../../default/files/duohouse.jpg) top left no-repeat;
+    height: 300px;
+    width: 100%;
+
+}
+
+div#views_slideshow_cycle_div_columns-block_2_2 {
+	background: url(../../../../default/files/wood.jpg) top left no-repeat;
+    height: 300px;
+    width: 100%;
+
+}
+
+div#views_slideshow_cycle_div_columns-block_2_3 {
+	background:url(../../../../default/files/clouds.jpg) top left no-repeat;
+    height: 300px;
+    width: 100%;
+
+}
+
+div#views_slideshow_cycle_div_columns-block_2_4 {
+	background:#404040 url(../../../../default/files/map.jpg) top left no-repeat;
+    height: 300px;
+    width: 100%;
+
+}
+
+div#views_slideshow_cycle_div_columns-block_2_5 {
+	background:#404040 url(../../../../default/files/home.jpg) top left no-repeat;
+    height: 300px;
+    width: 100%;
+
+}
+
+div#views_slideshow_controls_text_columns-block_2 /* SLIDESHOW CONTROLS */ {
+	text-align:center;
+	margin-top:-45px;
+	z-index:20;
+	position:absolute;
+	width:728px;
+}
+
+div#views_slideshow_controls_text_columns-block_2 span  /* SLIDESHOW CONTROLS */ {
+	width:100px;
+}
+
+div#views_slideshow_controls_text_columns-block_2 span a /* SLIDESHOW CONTROLS */ {
+	font-size:.01em;
+	padding:1.5% 4%;
+	opacity:0.6;
+	color:white;
+
+}
+
+div#views_slideshow_controls_text_columns-block_2 span a:hover /* SLIDESHOW CONTROLS */ {
+	
+	opacity:1.0;
+
+}
+
+
+div#views_slideshow_controls_text_columns-block_2 span.views_slideshow_controls_text_previous a {
+	background:url(../../../../default/files/back.png) center top no-repeat;
+	padding-left:1%;
+}
+
+div#views_slideshow_controls_text_columns-block_2 span.views_slideshow_controls_text_next a {
+	background:url(../../../../default/files/forward.png) center top no-repeat;
+		
+}
+
+div#views_slideshow_controls_text_columns-block_2 span.views_slideshow_controls_text_pause.views-slideshow-controls-text-pause-processed.views-slideshow-controls-text-status-pause a,
+div#views_slideshow_controls_text_columns-block_2 span.views_slideshow_controls_text_pause.views-slideshow-controls-text-pause-processed.views-slideshow-controls-text-status-play a {
+	
+	display:none;
+}
+
+
+p.site-intro {
+	padding:2px 0px 22px;
+	font-size:1.1em;
+	color:black;
+}
+
+div.adslist {
+	margin:12px 0px;
+}
+
+div.pane-views-columns-block-1 /* QUERIN */ {
+float:left;
+margin-right:5%
+}
+
+div.pane-views-columns-block-1 div.views-field.views-field-field-icon div.field-content img {
+	width:30px;
+	height:auto;
+	margin:4px 0px 12px 12px;
+	float:right;
+}
+
+div.pane-views-columns-block-3 /* BUSCH */ {
+	float:left;
+	margin-right:3%
+}
+
+div.pane-views-columns-block-3 div.views-field.views-field-field-icon div.field-content img {
+	width:40px;
+	height:auto;
+	margin:4px 0px 12px 12px;
+	float:right;
+}
+div#views_slideshow_cycle_teaser_section_columns-block_2 {
+	width:100% !important;
+}
+
+div.pane-views-columns-block-1, div.pane-views-columns-block-3, div.pane-block-1 {
+	width:30%;
+}
+
+div.pane-block-1 { 
+	float:right;
+}
+
+.front div.pane-views-community-updates-block-1 h2.pane-title {
+	 background: none repeat scroll 0 0 #e49e08;
+    border-bottom: medium none;
+    color: white;
+    text-align: center;
+}
+
+div.pane-block-1 h2.pane-title {
+	background:#887b61;
+	border-bottom:1px solid #887b61;
+	color:white;
+	text-align:center;
+}
+div.pane-views-columns-block-1 div.views-field.views-field-title span.field-content a,
+div.pane-views-columns-block-3 div.views-field.views-field-title span.field-content a {
+	font-size:1.2em;
+	line-height:115%;
+	
+}
+
+div.pane-views-columns-block-1 div.views-field.views-field-title,
+div.pane-views-columns-block-3 div.views-field.views-field-title {
+
+	margin:3% 0% 1%;
+}
+
+/* SLIDESHOW */
+
+
+div.views-slideshow-cycle-main-frame-row
+{
+	width:100%;
+	border:0px;
+	background:none;
+	
+}
+
+div.views-slideshow-cycle-main-frame-row div.views-row-odd, div.views-slideshow-cycle-main-frame-row div.views-row-even {
+	border:0px;
+	
+}
+
+div.views-slideshow-cycle-main-frame-row div.views-row-even {
+	
+}
+
+
+div.views-slideshow-cycle-main-frame-row-item {
+	width:100%;
+	
+}
+
+div.views-slideshow-cycle-main-frame-row-item.views-row {
+	padding:0px;
+}
+
+div.views-slideshow-cycle-main-frame-row-item.views-row img {
+	float:right;
+}
+
+div.views-slideshow-cycle-main-frame-row div.views-field.views-field-title  {
+		
+		background:none;
+		padding:0%;
+}
+
+
+
+
+div.views-slideshow-cycle-main-frame-row div.views-field.views-field-title a {
+	font-size:2.25em;
+	line-height:115%;
+	font-weight:300;
+color:white;
+display:block;
+padding:2% 2% 2% 3%;
+}
+
+div.views-slideshow-cycle-main-frame-row div.views-field.views-field-title a:hover {
+	background:url(../../../../default/files/20pct_black.png) ;
+	transition:0.5s ease;
+	text-decoration:none;
+	text-shadow:0px 0px 5px white;
+	
+}
+
+div.views-field.views-field-field-featured-image {
+	height:300px;
+	float:right;
+	margin:0% 0% 0% 4%;
+}
+
+div.views-field.views-field-field-question-or-teaser a {
+color: white;
+    display: block;
+    font-size:2.25em;
+    font-weight: 300;
+    line-height: 115%;
+    padding: 2% 2% 1% 3%;
+}
+
+div.views-field.views-field-field-title-via-token-for-views-  {
+color: white;
+    display: block;
+    font-size:2.25em;
+    font-weight: 300;
+	
+    line-height: 115%;
+    padding: 2% 2% 1% 3%;
+}
+
+
+body.logged-in div.views-field.views-field-field-download-link a {
+color: white;
+    display: block;
+    font-size:1.75em;
+    font-weight: 500;
+	
+    line-height: 115%;
+    padding: 2% 2% 2% 3%;
+}
+
+body.logged-in div.views-field.views-field-field-download-link-1  {
+display:none;
+}
+
+body.not-logged-in div.views-field.views-field-field-download-link-1  {
+color: white;
+    display: block;
+    font-size:1.75em;
+    font-weight: 300;
+	
+    line-height: 115%;
+    padding: 2% 2% 2% 3%;
+}
+
+body.not-logged-in div.views-field.views-field-field-download-link-1 a  {
+color: white;
+    
+    font-weight: 600;
+	
+  
+}
+
+
+
+ body.not-logged-in div.views-field.views-field-field-download-link a {
+	 display:none;
+ }
+
+div.views-field.views-field-field-question-or-teaser a:hover,
+div.views-field.views-field-field-download-link a:hover {
+background:url(../../../../default/files/20pct_black.png);
+	text-decoration:none;
+	text-shadow:0px 0px 5px white;
+}
+
+
+
+
+/* PARK DIRECTORY */
+
+iframe {
+	background:#eee;
+	border:none;
+}
+
+/* COMMUNITY UPDATES AND COLUMNS VIEWS*/
+
+div.view-id-community_updates div.views-row,
+.not-front div.view-id-columns div.views-row {
+	background:white;
+	
+	padding:1.5% 3% 2% 2.5%;
+}
+
+div.view-id-community_updates div.views-row p {
+	font-size:1em;
+}
+
+div.view-id-community_updates div.views-row-last {
+	
+	padding-top:3%;
+}
+
+
+div.view-id-community_updates div.views-row-even,
+	.not-front div.view-id-columns div.views-row-even {
+	background:#f8f8f8;
+	border-top:1px solid #ccc;
+}
+
+div.view-id-community_updates div.views-field-title a,
+div.view-id-columns div.views-field-title a {
+	font-size:1.4em;
+	line-height:115%;
+}
+
+.front div.view-id-community_updates div.views-field-title a {
+	font-size:1.25em;
+	line-height:115%;
+	
+	}
+
+/* EMPLOYMENT PAGE */
+
+
+body.node-type-job-listings div.group-right {
+	width:62%;
+}
+
+body.node-type-job-listings div.group-left {
+	width:35%;
+}
+
+body.node-type-job-listings div.field-name-field-company-logo img {
+	width:100%;
+	height:auto;
+	max-width:300px;
+	margin:3% 0% 8%;
+}
+
+/* EMPLOYMENT LISTINGS */
+
+div.view.view-employment-listings div.views-field-field-company-logo  img{
+	float:right;
+	margin:0px 0px 3% 2%;
+}
+
+div.view.view-employment-listings div.views-field.views-field-title a {
+	font-size:1.5em;
+}
+
+div.view.view-employment-listings div.views-row,
+.not-front div.view.view-employment-listings div.views-row {
+	background:white;
+	
+	padding:1.5% 3% 2% 2.5%;
+}
+
+
+div.view.view-employment-listings div.views-row-even,
+	.not-front div.view.view-employment-listings div.views-row-even {
+	background:#f8f8f8;
+	border-top:1px solid #ccc;
+}
+
+div.view.view-employment-listings div.views-field-created span {
+	color:#999;
+	font-size:1em;
+}
+
+div.view.view-employment-listings div.views-field-field-profile-name {
+	color:#222;
+	font-size:1.2em;
+}
+
+div.view.view-employment-listings div.views-field-field-combined-address span {
+	color:#666;
+	font-size:1em;
+}
+
+div.view.view-employment-listings div.views-field-body {
+	font-size:1.1em;
+	
+}
+
+
+
+/* REAL ESTATE PAGE */
+
+div.field.field-name-field-listing-images img {
+	width:100%;
+	height:auto;
+}
+
+body.node-type-real-estate-listing div.group-right {
+	width:37%;
+}
+
+body.node-type-real-estate-listing div.group-left {
+	width:60%;
+}
+
+div.field.field-name-field-price {	
+	background: none repeat scroll 0 0 #999;
+    border-radius: 10px;
+    color: #fff;
+    display: inline-block;
+   
+    font-size: 1.25em;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 3%;
+    min-width: 10px;
+    padding: 4px 6px;
+    text-align: center;
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+
+/* REAL ESTATE LISTINGS */
+
+div.view.view-real-estate-listings div.views-field.views-field-title a {
+	font-size:1.5em;
+}
+
+div.view.view-real-estate-listings div.views-row,
+.not-front div.view.real-estate-listings div.views-row {
+	background:white;
+	
+	padding:1.5% 3% 2% 2.5%;
+}
+
+div.view.view-real-estate-listings div.views-row-even,
+	.not-front div.view.view-real-estate-listings div.views-row-even {
+	background:#f8f8f8;
+	border-top:1px solid #ccc;
+}
+
+
+div.views-field.views-field-field-listing-images img {
+	padding:.5%;
+	background:white;
+	border:1px solid #999;
+	float:right;
+	margin-left:3%;
+}
+
+div.views-field.views-field-field-price {
+     background:  #999;
+    border-radius: 10px;
+    color: #fff;
+    display: inline-block;
+    font-size: 1.25em;
+    font-weight: 600;
+    line-height: 1;
+    margin: 0 1% 1%;
+    min-width: 10px;
+    padding: 4px 6px;
+    text-align: center;
+    vertical-align: baseline;
+    white-space: nowrap;
+	float:right;
+}
+
+div.views-field.views-field-field-property-address,
+div.views-field.views-field-field-combined-address {
+	font-size:1.1em;
+}
+
+div.view.view-real-estate-listings div.views-field.views-field-body {
+	color:#666666;
+	margin-top:12px;
+}
+
+/* ASSOCIATE MEMBERS - FRONT PAGE */
+
+div.view.view-associate-members div.views-field-field-company-logo img {
+	width:125px;
+	max-width:150px;
+	margin:0px 0px 15px 15px;
+	height:auto;
+	float:right;
+}
+
+div.view.view-associate-members p {
+	font-size:1em;
+}
+
+div.view.view-associate-members div.views-row div span {
+	font-weight:600;
+}
+/* COMMUNITY UPDATES AND COLUMN PAGES - ACCESS RESTRICTIONS */
+
+
+ body.logged-in section#block-block-5 {
+	 display:none;
+ }
+  section#block-block-5 {
+  padding:2%;
+	 background:#eee;
+	 	 margin:12px 0px;
+  }
+ section#block-block-5 h2.block-title {
+	 font-size:1.5em;
+margin-bottom:6px;
+	
+	
+ }
+ 
+ section#block-block-5 p {
+	 font-size:1.2em;
+	 color:#666;
+ }
+ 
+ section#block-block-5 p a {
+	 font-weight:600;
+ }
+ 
+ 
+ 
+ body.not-logged-in.node-type-column div.field.field-name-body.field-label-hidden div.field-items div.field-item p,
+ body.not-logged-in.node-type-community-updates div.field.field-name-body.field-label-hidden div.field-items div.field-item p
+  {
+	  display:none;
+  }
+
+/* OREGON LAWS */
+
+div.oregonlaws h1 {
+    font-size: 175%;
+    font-weight: bold;
+    text-align: center;
+}
+div.oregonlaws h2 {
+    font-size: 125%;
+    text-align: center;
+}
+div.oregonlaws h3 {
+font-size: 125%;
+    margin: 12px 0;
+    text-align: left;
+}
+div.oregonlaws p {
+    font-size: 1.2em;
+}
+div.oregonlaws ul {
+    list-style-type: none;
+}
+div.oregonlaws li {
+    font-size: 1.1em;
+    padding-bottom: 1em;
+}
+div.oregonlaws .contents li {
+    padding-left: 3em;
+    text-indent: -5em;
+}
+div.oregonlaws a {
+    background: none repeat scroll 0 0 #ddd;
+    font-size: 1.2em;
+    font-weight: 800;
+    margin: 6px 12px 6px 0;
+    padding: 0.25em;
+}
+div.oregonlaws .preformat li {
+    white-space: pre;
+}
