@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /* CSS Document */
 
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,400);
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,300);
+
  /* TWO COLUMN FLIPPED */
 
 /* CSS file for 63-37 stacked layout. */
@@ -17,9 +17,15 @@
 }
 
 a, span, p, body, h1, h2, h3, h4 {
-	font-family: 'Source Sans Pro', sans-serif;
-	text-rendering: optimizelegibility;
+	font-family: 'Source Sans Pro', sans-serif !important;
+	
+font-weight:400;
+}
 
+/* ICONS WON'T PULL FROM BOOTSTRAP CSS */
+
+span.glyphicon {
+	display:none !important;
 }
 
 a {
@@ -33,13 +39,21 @@ a, button:hover, img a:hover {
 }
 
 p {
-	font-size:1.1em;
+	font-size:1.15em;
+
+
+	
 }
 
 div.region-content p {
 	margin-bottom:12px;
+	line-height:165%;
 }
-
+/*
+div.field-content {
+	line-height:150%;
+}
+ */
 div.region-content ul, div.region-content ol {
 	    margin: 12px 0;
     padding-left: 24px;
@@ -47,15 +61,16 @@ div.region-content ul, div.region-content ol {
 }
 
 div.region-content li {
-	font-size: 1.05em;
+	font-size: 1.15em;
     line-height: 130%;
     margin: 6px 0;
 	color:#333;
 }
 
 fieldset {
-	padding:2%;
+	padding:1.5%;
 }
+
 
 h1 {
 	font-weight:300;
@@ -126,6 +141,10 @@ section#block-block-5 h2 {
 	margin-top:0px;
 }
 
+body.not-logged-in div.speaker-presentations {
+	display:none;
+}
+
 /* SLIDESHOW */
 
 div.pane-views-columns-block-2 {
@@ -136,7 +155,7 @@ div.pane-views-columns-block-2 {
 }
 
 div#views_slideshow_cycle_teaser_section_columns-block_2 {
-	height:300px !important;
+/*	height:300px !important; */
 }
 
 div.views-slideshow-cycle-main-frame-row {
@@ -177,42 +196,7 @@ body.page-membership-associate-members table tr td {
 	vertical-align:middle;
 }
 
-/* SPEAKER PRESENTATIONS */
 
-div#speaker-capsule div#conference img {
-    background: none repeat scroll 0 0 white;
-    border: 1px solid #aeb4c7;
-    box-shadow: 0 0 1px 1px #666;
-    float: left;
-    margin: 0 24px 24px 0px;
-    padding: 4px;
-}
-
-ul#speaker-contact {
-    list-style: none outside none;
-    margin: 6px 0;
-}
-ul#speaker-contact li {
-    border-bottom: 1px solid #eee;
-    line-height: 170%;
-    margin-left: 150px;
-    text-indent: 24px;
-}
-ul#speaker-contact li#speaker-phone {
-    background: url(../../../../default/files/2013/phone.gif) no-repeat scroll left center rgba(0, 0, 0, 0);
-    color: #7e7565;
-}
-ul#speaker-contact li#speaker-web {
-       background: url(../../../../default/files/2013/web.gif) no-repeat scroll left center rgba(0, 0, 0, 0);
-}
-ul#speaker-contact li#speaker-email {
-        background: url(../../../../default/files/2013/email.gif) no-repeat scroll left center rgba(0, 0, 0, 0);
-}
-ul#speaker-contact li#speaker-phone {
-    font-family: 'Harbor Medium',Trebuchet MS;
-    font-size: 16px;
-    font-weight: 600;
-}
 
 /* STORE */
 
@@ -268,62 +252,95 @@ div.view-id-store  div.views-row h2 {
 	text-align:left;
 }
 
+button#edit-update {
+	float:right;
+	margin:0px 0px 0px 15px;
+	font-size:1.5em;
+}
+
+button#edit-checkout--2 {
+ float:right;
+ color:white;
+ background:green;
+ font-size:1.5em;
+	}
+	
+	button#edit-checkout--2:hover {
+color:yellow;
+background:blue;
+	}
+
 /* 2014 ANNUAL CONFERENCE */
 
 div#speakers {
 }
 div#agenda {
-    background: -moz-linear-gradient(center top , #fffbef 0%, #fff 100%) repeat scroll 0 0 #fffbef;
+  background: none repeat scroll 0 0 #fffbef;
     border: 1px solid #c1bcb4;
     border-radius: 5px;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
     color: #454545;
     float: right;
-    font-size: 13px;
+    font-size: 1em;
     line-height: 125%;
     margin: 0 0 20px 20px;
     padding: 12px;
-    width: 270px;
+    width: 100%;
+}
+div#agenda h2 {
+	background:#E5C97B;
+	margin-bottom:12px;
+	text-align:center;
+}
+
+div#agenda p.conference-location {
+	margin:0px;
+	font-size:.9em;
+font-variant:small-caps;
 }
 div#valley-river-inn {
-    background: -moz-linear-gradient(center top , #ffffff 0%, #e4f5f3 100%) repeat scroll 0 0 #e4f5f3;
+     background: none repeat scroll 0 0 #eee;
     border: 1px solid #c1bcb4;
     border-radius: 5px;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
     color: #454545;
     float: right;
-    font-size: 13px;
-    line-height: 125%;
-    margin: 0 0 20px 26px;
-    padding: 0 10px 0 0;
-    width: 440px;
+    font-size: 1em;
+    line-height: 140%;
+    margin: 12px 0 24px 0px;
+    padding: 12px 12px 4px;
+    width: 100%;
 }
 div#valley-river-inn p img#vri {
     margin: 0 0 12px 12px !important;
+	float:right;
+	width:inherit;
 }
 div.region.region-content div#speakers div#agenda h3 {
     margin-top: 0;
 }
-div.region.region-content div#speakers div#agenda p, div.region.region-content div#speakers div#agenda h3 {
+div.region.region-content div#speakers div#agenda p {
     line-height: 130%;
     margin-bottom: 0;
+    padding-bottom:14px;
+}
+div.region.region-content div#speakers div#agenda h3  {
+  border-bottom: 1px solid #999;
+    font-size: 1.2em;
+    font-weight: 600;
+    line-height: 130%;
+    margin: 0 0 8px;
     padding: 0;
 }
 div.region.region-content div#speaker-capsule {
     border-bottom: 2px solid #ddd;
     min-height: 175px;
-    padding: 10px 0;
+    padding: 0px;
 }
 div.region.region-content div#speaker-capsule div#conference p {
+	margin-top:20px;
 }
-div.region.region-content div#speaker-capsule div#conference img {
-    background: none repeat scroll 0 0 white;
-    border: 1px solid #aeb4c7;
-    box-shadow: 0 0 2px 2px #bbbbbb;
-    float: left;
-    margin: 0 24px 24px 14px;
-    padding: 6px;
-}
+
 div.region.region-content div#speaker-capsule div#conference h2 {
     margin: 0;
     padding: 0;
@@ -356,6 +373,11 @@ ul#speaker-contact li#speaker-phone {
     font-weight: 600;
 }
 
+div#conference-intro h2 a {
+	font-size:1.25em;
+}
+
+
 /* FILLABLE FORMS */
 
 div.views-field.views-field-field-form-number  {
@@ -364,8 +386,7 @@ div.views-field.views-field-field-form-number  {
 }
 
 div.views-field.views-field-field-form-number a {
-    font-size: 1em;
-    font-weight: 400;
+    font-weight: 600;
     margin: 2.5% 0;
     background-color: #999;
     border-radius: 10px;
@@ -373,7 +394,7 @@ div.views-field.views-field-field-form-number a {
     display: inline-block;
     font-size: 2.5em;
     line-height: 1;
-    min-width: 10px;
+    width:90px;
     padding: 3px 7px;
 	text-align:center;
     white-space: nowrap;
@@ -382,16 +403,71 @@ div.views-field.views-field-field-form-number a {
 div.views-field.views-field-field-form-number a:hover {
   text-decoration:none;
   background:red;
+  text-shadow:1px 1px 8px white;
 }
 
 div.view.view-mhco-forms div.views-field-title  {
 	text-align:center;
+	font-size:1.15em;
 }
+
+
+
 
 body.not-logged-in div.view.view-mhco-forms table {
 	display:none;
 }
 
+div.view.view-mhco-forms table tr.even {
+    background:#f1f1f1;
+}
+
+div.view.view-mhco-forms table tr td {
+    padding: 12px !important;
+    vertical-align: top;
+    width: 33%;
+	border-bottom:1px solid #999;
+}
+
+.navbar-toggle {
+	padding:6px !important;
+}
+
+
+
+div.marquee-promotion {
+	width:100%;
+}
+
+div.marquee-promotion img {
+	width:100%;
+	height:auto;
+}
+
+img.file-icon {
+	width:16px;
+	height:auto;
+}
+
+/* hide CC start date */
+
+div.form-type-select.form-item-panes-payment-details-cc-start-month.form-item.form-group,
+div.form-type-select.form-item-panes-payment-details-cc-start-year.form-item.form-group {
+	display:none;
+}
+
+.order-review-table {
+border: solid 1px #999;	
+font-size: 1.2em;
+line-height: 1.4em;
+margin: auto;
+width: 100%;
+
+}
+
+
+
+body { }
 
 tr td {
 	padding:12px !important;
@@ -399,6 +475,10 @@ tr td {
 
 tr.even {
 	background:#f0f0f0;
+}
+
+h1.page-header {
+	font-size:2.5em;
 }
 
 div.main-container.container {
@@ -437,14 +517,15 @@ footer.footer.container div.region.region-footer {
 }
 
 .right {
-  width: 32%;
+  width: 33%;
   
   float:right;
 }
 
 .right img {
-	width:100%;
-	max-width:370px;
+	
+/*	max-width:360px; */
+	height:auto;
 }
 
 .right .inside {
@@ -540,8 +621,8 @@ header#navbar.affix {
 .navbar-default .navbar-nav > li > a {
     color: #247dbc !important;
     font-weight: 400;
-	font-size: 1.1em;
-	padding:15px 12px;
+	font-size: 1.05em;
+	padding:15px 9px;
 }
 
 .navbar-default {
@@ -573,8 +654,10 @@ div.utility-nav {
  }
 
  div.utility-nav  section#block-block-3 a {
-	 color:white;
-	 padding-left:20px;    font-size: .95em;
+	   color: white;
+    font-size: 1em;
+    font-weight: 600;
+    padding-left: 20px;
  }
 
  div.utility-nav  section#block-block-3 {
@@ -634,7 +717,7 @@ text-decoration:none;
 
   }
   section#block-block-4 p span.phone  {
-	  font-size:1.4em;
+	  font-size:1.15em;
 	  font-weight:600;
 	color:#7b7b7b;
   }
@@ -672,6 +755,15 @@ section#block-views-associate-members-block-2 {
 	display:none;
 }
 
+.front div.view.view-associate-members h2 {
+	  border-bottom: 1px solid #887b61;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    margin-bottom: 2%;
+    padding: 1.5% 2% 1.5% 0;
+    text-transform: uppercase;
+}
+
 div.view.view-associate-members div.views-field-field-company-logo img {
 	width:125px;
 	max-width:150px;
@@ -702,7 +794,7 @@ div.adslist {
 }
 
 div.simplead-container.image-ad.first  {
-	width:100%;
+	
 }
 
 div.simplead-container.image-ad.first img {
@@ -827,6 +919,11 @@ color:white;
 }
 
 /* SLIDESHOW */
+
+
+div#views_slideshow_cycle_div_columns-block_2_0 {
+	background: #10294f url(../../../../default/files/blueprint.png) top left no-repeat;
+}
 
 div#views_slideshow_cycle_div_columns-block_2_1 {
 	background:url(../../../../default/files/map.jpg) top left no-repeat;
@@ -963,19 +1060,20 @@ color: white;
     display: block;
     font-size:2.1em;
     font-weight: 300;
-    line-height: 115%;
+    line-height: 120%;
     padding: 2% 2% 1% 3%;
 }
 
 div.views-field.views-field-field-title-via-token-for-views-  {
 color: white;
     display: block;
-    font-size:2.25em;
+    font-size:2.1em;
     font-weight: 300;
-	
-    line-height: 115%;
+    line-height: 120%;
     padding: 2% 2% 1% 3%;
 }
+
+div.views-field.views-field-field-title-via-token-for-views-   div.field-content { line-height: 115%;}
 
 
 body.logged-in div.views-field.views-field-field-download-link a {
@@ -984,7 +1082,7 @@ color: white;
     font-size:1.75em;
     font-weight: 500;
 	
-    line-height: 115%;
+    line-height: 120%;
     padding: 2% 2% 2% 3%;
 }
 
@@ -998,7 +1096,7 @@ color: white;
     font-size:1.75em;
     font-weight: 300;
 	
-    line-height: 115%;
+    line-height: 120%;
     padding: 2% 2% 2% 3%;
 }
 
@@ -1009,6 +1107,15 @@ color: white;
 	
   
 }
+
+body.not-logged-in div.views-field.views-field-field-download-link-1   div.field-content {
+color: white;
+        line-height: 130%;
+    font-weight: 600;
+	
+  
+}
+
 
 
 
@@ -1180,16 +1287,24 @@ div.view.view-employment-listings div.views-field-body {
 
 /* REAL ESTATE PAGE */
 
+.moscone-content {
+	width:58%;
+}
+
+.moscone-sidebar {
+	width:42%;
+}
+
 div.field.field-name-field-property-address {
 	font-size:1.2em;
 }
 
-div.node-real-estate-listing div.field.field-name-field-combined-address {
+body.node-type-real-estate-listing span.combined_geo {
 	font-size:1.25em;
 	font-weight:600;
 }
 
-div.field.field-name-field-listing-images img {
+body.node-type-real-estate-listing  div.field.field-name-field-listing-images img {
 	  background: none repeat scroll 0 0 white;
     border: 1px solid #ddd;
     box-shadow: 0 1px 1px gray;
@@ -1197,6 +1312,21 @@ div.field.field-name-field-listing-images img {
     margin: 0 0 3%;
     padding: 1%;
     width: 100%;
+}
+
+body.node-type-real-estate-listing div.field-label {
+	color:#887b61;
+}
+
+
+body.node-type-real-estate-listing fieldset.group-home-details div.field,
+body.node-type-real-estate-listing fieldset.group-comm-information div.field  {
+	padding:2.5% 1%;
+	border-bottom:1px solid #ddd;
+}
+
+body.node-type-real-estate-listing fieldset.group-sales-contacts div.field.field-name-field-email {
+	margin-bottom:15px;
 }
 
 body.node-type-real-estate-listing div.group-right {
@@ -1238,7 +1368,7 @@ div.view.view-real-estate-listings div.views-row,
 .not-front div.view.real-estate-listings div.views-row {
 	background:white;
 	
-	padding:1.5% 3% 2% 2.5%;
+	padding:1.5% 3% 5% 2%;
 }
 
 div.view.view-real-estate-listings div.views-row-even,
@@ -1249,11 +1379,13 @@ div.view.view-real-estate-listings div.views-row-even,
 
 
 div.views-field.views-field-field-listing-images img {
-	padding:.5%;
-	background:white;
-	border:1px solid #999;
-	float:right;
-	margin-left:3%;
+ background: none repeat scroll 0 0 white;
+    border: 1px solid #999;
+    float: right;
+    height: auto;
+    margin: 0 0 3% 3%;
+    padding: 0.5%;
+    width: 35%;
 }
 
 div.views-field.views-field-field-price {
@@ -1264,13 +1396,13 @@ div.views-field.views-field-field-price {
     font-size: 1.25em;
     font-weight: 600;
     line-height: 1;
-    margin: 0 1% 1%;
+
     min-width: 10px;
     padding: 4px 6px;
     text-align: center;
     vertical-align: baseline;
     white-space: nowrap;
-	float:right;
+	
 }
 
 div.views-field.views-field-field-property-address,
@@ -1340,6 +1472,12 @@ img.carpenter-thumb {
 	display:none;
 }
 
+/* MOBILE UTILITY */
+
+section#block-block-10 {
+	display:none;
+}
+
 
 
 
@@ -1384,5 +1522,245 @@ div.oregonlaws .preformat li {
     white-space: pre;
 
 }
+
+/* MANAGEMENT SEMINARS */
+
+div.seminar-event { width:100%; border:1px solid #d6ccb8; padding:2% 1% 1% 2%; border-radius:9px;  margin:10px 0px 12px; background:white; box-shadow:1px 1px 2px #ccc; min-height:140px;}
+div.seminar-event div.column-one {width:33%; float:left; margin-right:3%; padding:0%;}
+div.seminar-event div.column-one h2 {font-size:1.75em; padding:0; background:#ffc411; color:black; padding:4px 4px 4px 12px; font-weight:600;}
+div.seminar-event div.column-one p {margin:0px;}
+div.seminar-event div.column-one p span.registration {padding-left:12px; font-style:italic;}
+div.seminar-event div.column-one h3 {font-size:1.2em; padding:0; background:#195782; color:white; padding:3px 3px 3px 12px; margin:6px 0px; letter-spacing:1px; text-transform:uppercase;}
+div.seminar-event div.column-two { width:42%; float:left; margin-right:1%; padding:2% 2% 0% 2%; background:#e8f4fc;}
+div.seminar-event div.column-three {width:21%; float:right; padding:1% 0 2% 2%;}
+div.seminar-event  div.seminar-register {
+}
+div.seminar-event  div.seminar-register a {background: none repeat scroll 0 0 #887b61; border: 0 none; border-radius: 12px; font-size: 1.3em; padding: 6px 12px; text-align:center; color:white;}
+div.seminar-event  div.seminar-register a:hover {background:red; text-decoration:none;}
+
+/* 2014 ANNUAL CONFERENCE */
+
+div#speakers {
+}
+
+div#speakers h2 { margin:10px 0px 0px; font-size:1.65em; font-weight:600;}
+}
+div#agenda {
+  background: none repeat scroll 0 0 #fffbef;
+    border: 1px solid #c1bcb4;
+    border-radius: 5px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+    color: #454545;
+    float: right;
+    font-size: 1em;
+    line-height: 125%;
+    margin: 0 0 20px 20px;
+    padding: 12px;
+    width: 30%;
+}
+div#agenda h2 {
+	background:#E5C97B;
+	margin-bottom:12px;
+	text-align:center;
+}
+
+div#agenda p.conference-location {
+	margin:0px;
+	font-size:.9em;
+font-variant:small-caps;
+}
+div#valley-river-inn {
+     background: none repeat scroll 0 0 #eee;
+    border: 1px solid #c1bcb4;
+    border-radius: 5px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+    color: #454545;
+    float: right;
+    font-size: 1em;
+    line-height: 140%;
+    margin: 12px 0 24px 12px;
+    padding: 12px 12px 4px;
+    width: 100%;
+}
+div#valley-river-inn p img#vri {
+    margin: 0 0 12px 12px !important;
+	float:right;
+	width:inherit;
+}
+div.region.region-content div#speakers div#agenda h3 {
+    margin-top: 0;
+}
+div.region.region-content div#speakers div#agenda p {
+    line-height: 130%;
+    margin-bottom: 0;
+    padding-bottom:14px;
+}
+div.region.region-content div#speakers div#agenda h3  {
+  border-bottom: 1px solid #999;
+    font-size: 1.2em;
+    font-weight: 600;
+    line-height: 130%;
+    margin: 0 0 8px;
+    padding: 0;
+}
+div.region.region-content div#speaker-capsule {
+    border-bottom: 2px solid #ddd;
+    min-height: 175px;
+    padding: 0px 0;
+}
+div.region.region-content div#speaker-capsule div#conference p {
+	margin-top:20px;
+}
+div.region.region-content div#speaker-capsule div#conference img {
+    background: none repeat scroll 0 0 white;
+    border: 1px solid #aeb4c7;
+    box-shadow: 0 0 2px 2px #bbbbbb;
+    float: left;
+    margin: 0 24px 24px 0px;
+    padding: 6px;
+	width: inherit;
+}
+div.region.region-content div#speaker-capsule div#conference h2 {
+    margin: 0;
+    padding: 0;
+}
+div.region.region-content div#speaker-capsule div#conference h3 {
+    margin: 0;
+}
+ul#speaker-contact {
+    list-style: none outside none;
+    margin: 6px 0;
+}
+ul#speaker-contact li {
+    border-bottom: 1px solid #eee;
+    line-height: 170%;
+    margin-left: 150px;
+    text-indent: 24px;
+}
+ul#speaker-contact li#speaker-phone {
+    background: url("../../../../../sites/default/files/2013/phone.gif") no-repeat scroll left center rgba(0, 0, 0, 0);
+    color: #7e7565;
+}
+ul#speaker-contact li#speaker-web {
+    background: url("../../../../../sites/default/files/2013/web.gif") no-repeat scroll left center rgba(0, 0, 0, 0);
+}
+ul#speaker-contact li#speaker-email {
+    background: url("../../../../../sites/default/files/2013/email.gif") no-repeat scroll left center rgba(0, 0, 0, 0);
+}
+ul#speaker-contact li#speaker-phone {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* SPEAKER PRESENTATIONS */
+
+div#speaker-capsule div#conference img {
+    background: none repeat scroll 0 0 white;
+    border: 1px solid #aeb4c7;
+    box-shadow: 0 0 1px 1px #666;
+    float: left;
+    margin: 0 24px 24px 0px;
+    padding: 4px;
+}
+div.conference-header {
+	 float: right;
+    margin: 0 0 10px 12px;
+    width: 451px;
+}
+div#conference-intro {
+	float:left;
+}
+
+div#conference-intro p.register-now {
+  text-align:center;
+}
+
+div#conference-intro p.register-now a {
+  background-color: #247dbc;
+    border-radius: 10px;
+    color: #fff;
+    display: inline-block;
+    font-size: 1.5em;
+    font-weight: 600;
+    line-height: 1;
+    margin: 12px 0;
+    padding: 8px 10px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+
+
+div#conference-intro p.register-now a:hover {
+  text-decoration:none;
+  background:red;
+  text-shadow:1px 1px 8px white;
+}
+
+
+div.conference-header img {
+	float:right;
+}
+
+ul#speaker-contact {
+    list-style: none outside none;
+    margin: 6px 0;
+}
+ul#speaker-contact li {
+    border-bottom: 1px solid #eee;
+    line-height: 170%;
+    margin-left: 150px;
+    text-indent: 24px;
+}
+ul#speaker-contact li#speaker-phone {
+    background: url(../../../../default/files/2013/phone.gif) no-repeat scroll left center rgba(0, 0, 0, 0);
+    color: #7e7565;
+}
+ul#speaker-contact li#speaker-web {
+       background: url(../../../../default/files/2013/web.gif) no-repeat scroll left center rgba(0, 0, 0, 0);
+}
+ul#speaker-contact li#speaker-email {
+        background: url(../../../../default/files/2013/email.gif) no-repeat scroll left center rgba(0, 0, 0, 0);
+}
+ul#speaker-contact li#speaker-phone {
+    font-family: 'Harbor Medium',Trebuchet MS;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* FILLABLE FORMS */
+
+
+div.view-id-mhco_forms.view-display-id-block_1 div.views-field.views-field-field-form-number  {
+	text-align:left;
+	
+}
+
+div.view-id-mhco_forms.view-display-id-block_1 div.views-field.views-field-field-form-number a {
+    font-weight: 600;
+    margin: 2.5% 0;
+    background-color: #999;
+    border-radius: 10px;
+    color: #fff;
+    display: inline-block;
+    font-size: 1.35em;
+    line-height: 1;
+    width:60px;
+    padding: 3px 7px;
+	text-align:center;
+    white-space: nowrap;
+}
+
+div.view-id-mhco_forms.view-display-id-block_1 div.views-field.views-field-field-form-number a:hover {
+  text-decoration:none;
+  background:red;
+  text-shadow:1px 1px 8px white;
+}
+
+div.view-id-mhco_forms.view-display-id-block_1 div.views-field-title  {
+	text-align:left;
+	font-size:.9em;
+}
+
 
 }
